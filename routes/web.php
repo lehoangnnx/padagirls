@@ -11,13 +11,11 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-Route::get('/random', function () {
-    return view('page.imageRandom');
-});
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/random', 'RandomImagesController@index')->name('random');
 Route::get('/album', function () {
     return view('page.imageAlbum');
-});
+})->name('album');
 Route::get('/detail', function () {
     return view('page.detailAlbum');
 });

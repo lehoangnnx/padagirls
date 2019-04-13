@@ -3622,7 +3622,7 @@ section.single-content-section {
 .bottom-filter-wrap {
     padding: 0 24px 0 24px;
 }
-.bottom-filter-wrap .gallery-filters {
+/* .bottom-filter-wrap .gallery-filters {
 	position: absolute;
     bottom: 70px;
     height: auto !important;
@@ -3647,7 +3647,7 @@ section.single-content-section {
     height: 2px;
 	margin-bottom:-1px;
     background: #fff;
-}
+} */
 .hor-content_padd {
     padding: 0;
 }

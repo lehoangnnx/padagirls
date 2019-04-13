@@ -19,51 +19,26 @@
         <nav>
             <ul>
                 <li>
-                    <a href="#" class="act-link">Home </a>
+                    <a href="{{ route('home')}}">Trang Chủ</a>
+                </li>
+                <li>
+                    <a href="{{ route('random')}}">Tổng Hợp</a>
+                </li>
+                <li>
+                    <a href="{{ route('album')}}">Album </a>
                     <!--second level -->
                     <ul>
-                        <li><a href="index.html">Carousel</a></li>
-                        <li><a href="index2.html">Slider Details</a></li>
-                        <li><a href="index3.html">Multi Slideshow</a></li>
-                        <li><a href="index4.html">Slideshow</a></li>
-                        <li><a href="index5.html">Image</a></li>
-                        <li><a href="index6.html">Slider Classic</a></li>
-                        <li><a href="index7.html">Video</a></li>
+                        @foreach ($albums as $item)
+                        <li><a href="{{ $item->slug }}">{{ $item->name }}</a></li>
+                        @endforeach
                     </ul>
                     <!--second level end-->
                 </li>
                 <li>
-                    <a href="#">Portfolio </a>
-                    <!--second level -->
-                    <ul>
-                        <li><a href="portfolio.html">Horizontal 2 Columns</a></li>
-                        <li><a href="portfolio2.html">Horizontal 3 Columns</a></li>
-                        <li><a href="portfolio3.html">Horizontal 1 Columns</a></li>
-                        <li><a href="portfolio4.html">Masonry</a></li>
-                        <li><a href="portfolio5.html">Masonry 2</a></li>
-                        <li><a href="portfolio6.html">Column Grid</a></li>
-                        <li>
-                            <a href="#">Single </a>
-                            <!--third  level -->
-                            <ul>
-                                <li><a href="portfolio-single.html">Carousel</a></li>
-                                <li><a href="portfolio-single2.html">Fullscreen Slider </a></li>
-                                <li><a href="portfolio-single3.html">Column Grid</a></li>
-                                <li><a href="portfolio-single4.html">Column Fullwidth</a></li>
-                            </ul>
-                            <!--third level end-->
-                        </li>
-                    </ul>
-                    <!--second level end-->
+                    <a href="about.html">Giới Thiệu</a>
                 </li>
                 <li>
-                    <a href="about.html">About</a>
-                </li>
-                <li>
-                    <a href="blog.html">News</a>
-                </li>
-                <li>
-                    <a href="contacts.html">Contacts</a>
+                    <a href="contacts.html">Liên Hệ</a>
                 </li>
             </ul>
         </nav>
