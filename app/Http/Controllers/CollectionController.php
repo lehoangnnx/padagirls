@@ -37,6 +37,7 @@ class CollectionController extends Controller
     public function index($slug)
     {
         $albums = $this->albumRepository->getAllAlbumIsShow();
+        $models = $this->modelRepositoryInterface->getModelIsShow();
         $collection = $this->collectionRepositoryInterface->findBySlug($slug);
         $imagesCollection = $this->imagesCollectionRepositoryInterface->findByCollection($collection->id);
         $album = $this->albumRepository->findById($collection->id_album);
@@ -64,6 +65,7 @@ class CollectionController extends Controller
         ->with('collection', $collection)
         ->with('imagesCollection', $imagesCollection)
         ->with('album', $album)
+        ->with('models', $models)
         ->with('model', $model)
         ->with('collectionDownload', $collectionDownload)
         ->with('download', $download)

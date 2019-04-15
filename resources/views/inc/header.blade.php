@@ -1,7 +1,7 @@
 <!-- header start  -->
 <header class="main-header">
     <!-- logo   -->
-    <a href="index.html" class="logo-holder"><img src="images/logo.png" alt=""></a>  
+    <a href="{{ route('home') }}" class="logo-holder"><img src="images/logo.png" alt=""></a>  
     <!-- logo end  -->		
     <!-- search -->				
     <div class="search-button"><i class="far fa-search"></i></div>
