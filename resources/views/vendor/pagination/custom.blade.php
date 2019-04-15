@@ -1,13 +1,10 @@
 @if ($paginator->hasPages())
     <!-- Pagination -->
-    <div class="pull-right pagination">
-        <ul class="pagination">
             {{-- First Page Link --}}
             @if (!$paginator->onFirstPage())
                 <a style="font-size: 13px;" href="{{preg_replace('/\?'.$paginator->getPageName().'=[1]$/','',Request::url())}}"
                         class="gallery-filter" >First</a>
             @endif
-
             {{-- Pagination Elements --}}
             @foreach ($elements as $element)
                 {{-- Array Of Links --}}
@@ -29,7 +26,5 @@
                 <a style="font-size: 13px;" href="{{ $paginator->url( $paginator->lastPage()) }}"
                     class="gallery-filter" >Last</a>
             @endif
-        </ul>
-    </div>
     <!-- Pagination -->
 @endif

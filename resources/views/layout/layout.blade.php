@@ -1,24 +1,26 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>Laravel</title>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <meta name="robots" content="index, follow"/>
-        <meta name="keywords" content=""/>
-        <meta name="description" content=""/>
-        <!--=============== css  ===============-->	
-        <link type="text/css" rel="stylesheet" href="css/reset.css">
-        <link type="text/css" rel="stylesheet" href="css/plugins.css">
-        <link type="text/css" rel="stylesheet" href="css/style.css">
-        <link type="text/css" rel="stylesheet" href="css/style-dark.css"> 
-        <!--=============== favicons ===============-->
-        <link rel="shortcut icon" href="images/favicon.ico">
+<head>
+    <meta charset="utf-8">
+    <title>Laravel</title>
 
-       
-    </head>
-    <body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <!--=============== css  ===============-->
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/plugins.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/style-dark.css') }}">
+    <!--=============== favicons ===============-->
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
+
+
+</head>
+
+<body>
     <!--loader-->
     @include('inc.loader')
     <!--loader end-->
@@ -26,14 +28,14 @@
     <!-- main start  -->
     <div id="main">
         <!-- header start  -->
-        @include('inc.header')
+    @include('inc.header')
         <!-- header end -->
 
-        <!-- wrapper  -->	
+        <!-- wrapper  -->
         <div id="wrapper">
-            <!--content -->	
+            <!--content -->
             @yield('content')
-            <!--content end-->	
+            <!--content end-->
 
             <!--share-wrapper-->
             @include('inc.shareWrapper')
@@ -46,15 +48,17 @@
         <!-- sidebar end -->
 
         <!-- cursor-->
-        {{-- <div class="element">
+        {{--
+        <div class="element">
             <div class="element-item"></div>
         </div> --}}
-        <!-- cursor end-->     
+        <!-- cursor end-->
     </div>
     <!-- Main end -->
     <!--=============== scripts  ===============-->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/plugins.js"></script>
-    <script type="text/javascript" src="js/scripts.js"></script>
-    </body>
+    <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>         
+    <script type="text/javascript" src="{{ asset('js/plugins.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/scripts.js') }}"></script>
+</body>
+
 </html>

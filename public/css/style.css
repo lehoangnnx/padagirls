@@ -3335,7 +3335,7 @@ section.single-content-section {
 	right:-71px;
 }
 .content-nav_mediatooltip img {
-	width: auto;
+	width: 50px;
 	height:50px;
 	position:absolute;
 	top:50%;

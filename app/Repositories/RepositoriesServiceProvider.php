@@ -26,6 +26,22 @@ class RepositoriesServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\CollectionRepositoryInterface',
             'App\Repositories\Eloquents\CollectionRepository'
         );
+        $this->app->bind(
+            'App\Repositories\Contracts\ImagesCollectionRepositoryInterface',
+            'App\Repositories\Eloquents\ImagesCollectionRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\Contracts\ModelRepositoryInterface',
+            'App\Repositories\Eloquents\ModelRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\Contracts\CollectionDownloadRepositoryInterface',
+            'App\Repositories\Eloquents\CollectionDownloadRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\Contracts\DownloadRepositoryInterface',
+            'App\Repositories\Eloquents\DownloadRepository'
+        );
 
     }
 }

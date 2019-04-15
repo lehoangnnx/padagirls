@@ -40,7 +40,7 @@
             @foreach ($images as $item)
                 <div class="portfolio_item">
                     <div class="grid-item-holder hov_zoom">
-                        <img src="{{ $item->url }}" alt="">
+                        <img  src="{{ $item->url_thumbnail }}" alt="">
                         <a href="{{ $item->url }}" class="box-media-zoom popup-image"><i class="fal fa-search"></i></a>
                     </div>
                 </div>

@@ -13,12 +13,13 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/random', 'RandomImagesController@index')->name('random');
-Route::get('/album', function () {
-    return view('page.imageAlbum');
-})->name('album');
-Route::get('/detail', function () {
-    return view('page.detailAlbum');
-});
+Route::get('/album', 'AlbumController@index')->name('album');
+Route::get('/album/{slug}', 'AlbumController@getCollectionByAlbum')->name('collectionByAlbum');
+Route::get('/{slug}', 'CollectionController@index')->name('detailCollection');
+Route::get('model/{slug}', 'ModelController@getModelBySlug')->name('modelBySlug');
+// Route::get('/detail', function () {
+//     return view('page.detailAlbum');
+// });
 Route::get('/about', function () {
     return view('page.about');
 });

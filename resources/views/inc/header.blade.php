@@ -25,11 +25,21 @@
                     <a href="{{ route('random')}}">Tổng Hợp</a>
                 </li>
                 <li>
-                    <a href="{{ route('album')}}">Album </a>
+                    <a href="{{ route('album')}}">Album</a>
                     <!--second level -->
                     <ul>
                         @foreach ($albums as $item)
-                        <li><a href="{{ $item->slug }}">{{ $item->name }}</a></li>
+                        <li><a href="{{ route('collectionByAlbum', ['slug' =>$item->slug] ) }}">{{ $item->name }}</a></li>
+                        @endforeach
+                    </ul>
+                    <!--second level end-->
+                </li>
+                <li>
+                    <a href="javascript:void(0);">Model</a>
+                    <!--second level -->
+                    <ul>
+                        @foreach ($models as $item)
+                        <li><a href="{{ route('modelBySlug', ['slug' =>$item->slug] ) }}">{{ $item->name }}</a></li>
                         @endforeach
                     </ul>
                     <!--second level end-->
