@@ -1,8 +1,6 @@
-    <!--loader-->
-    <div class="loader-wrap">
-        <div class="spinner">
-            <div class="double-bounce1"></div>
-            <div class="double-bounce2"></div>
-        </div>
+<div class="preloader_active">
+    <div class="pm_preloader_load_back">
+        <div class="pm_preloader_border"></div>
+        <div class="pm_preloader_load_line"></div>
     </div>
-    <!--loader end-->
+</div>

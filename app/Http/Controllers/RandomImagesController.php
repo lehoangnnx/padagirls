@@ -27,9 +27,15 @@ class RandomImagesController extends Controller
     {
         $albums = $this->albumRepository->getAllAlbumIsShow();
         $models = $this->modelRepositoryInterface->getModelIsShow();
-        $images = $this->imagesRepository->randomPaginate(20);
+        $images = $this->imagesRepository->randomPaginate(4);
         return view('page.imageRandom')->with('albums', $albums)
         ->with('models', $models)
         ->with('images', $images);
+    }
+
+    public function apiRandom()
+    {
+        $images = $this->imagesRepository->randomPaginate(100);
+        return response()->json(array('images'=> $images), 200);
     }
 }

@@ -1,122 +1,174 @@
 @extends('layout.layout') 
 @section('content')
-<!-- content -->
-<div class="content">
-    <!-- column-image  -->
-    <div class="column-image">
-        <div class="bg" data-bg="{{ $imagesCover }}"></div>
-        <div class="overlay"></div>
-        <div class="column-title">
-            <h2>{{ $collection->name}}</h2>
-        </div>
-        <div class="fixed-column-dec"></div>
-    </div>
-    <!-- column-image end  -->
-    <!-- column-wrapper -->
-    <div class="column-wrapper single-content-section">
-        <div class="fixed-bottom-content">
-            <!-- pagination   -->
-            <div class="content-nav-fixed">
-                <ul>
-                    <li>
-                        <a href="{{ route('detailCollection', ['slug' => $previousCollection->slug ]) }}" class="ln"><i class="fal fa-long-arrow-left"></i><span>Prev <strong>- {{ $previousCollection->name }}</strong></span></a>
-                        <div class="content-nav_mediatooltip cnmd_leftside"><img src="{{ $imagesPreviousCollection->url }}" alt=""></div>
-                    </li>
-                    <li>
-                        <a href="{{ route('detailCollection', ['slug' => $nextCollection->slug ]) }}" class="rn"><span >Next <strong>- {{ $nextCollection->name }}</strong></span> <i class="fal fa-long-arrow-right"></i></a>
-                        <div class="content-nav_mediatooltip cnmd_rightside"><img src="{{ $imagesNextCollection->url }}" alt=""></div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <section id="sec1">
-            <div class="container small-container">
-                <!-- post -->
-                <div class="post fl-wrap fw-post single-post ">
-                    <div class="section-title fl-wrap">
-                        <h3>Project Gallery</h3>
-                        <h4>Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa</h4>
-                        <div class="section-number">01.</div>
+<!-- Content -->
+<div class="pm_dark_type single-portfolio pm_overflow_visible pm_wrapper pm_container">
+    <div class="pm_row">
+        <div class="pm_span12">
+            <div class="pm_standard_title_and_likes_container">
+                <div class="pm_post_title_cont pm_fleft">
+                    Standard Post
+                </div>
+                <div class="pm_fright">
+                    <div class="pm_post_likes_wrapper">
+                        <div class="pm_add_like_button">
+                            <i class="pm_likes_icon fa fa-heart-o"></i>
+                            <span class="pm_likes_counter">0</span>
+                        </div>
                     </div>
-                    <div class="pr-det-container  ">
-                        <div class="fl-wrap">
-                            <!-- blog media -->
-                            <div class="blog-media fl-wrap">
-                                <!-- portfolio start -->
-                                <div class="gallery-items min-pad   three-column fl-wrap lightgallery">
-                                    <!-- gallery-item-->
+                    <div class="pm_prev_slide_button">
+                        <span class="pm_prev_thumb_cont" style="background: url('http://pixel-mafia.com/demo/html-templates/travis/img/clipart/grid/thumbs/thumb-10.jpg') no-repeat center;"></span>
+                        <span class="pm_prev_button_fader"></span>
+                        <a href="http://pixel-mafia.com/demo/html-templates/travis/porfolio-post-video-full.html"></a>
+                    </div>
+                    <div class="pm_next_slide_button">
+                        <span class="pm_next_thumb_cont" style="background: url('http://pixel-mafia.com/demo/html-templates/travis/img/clipart/grid/thumbs/thumb-09.jpg') no-repeat center;"></span>
+                        <span class="pm_next_button_fader"></span>
+                        <a href="http://pixel-mafia.com/demo/html-templates/travis/porfolio-post-image-full.html"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pm_standard_output_cont">
+                    <div class="pm_dark_type album_masonry_page pm_album_grid pm_columns_4">
+                            <div class="pm_gallery_container gallery_grid">
+                                <div class="pm_gallery isotope photo_gallery">
+                    
                                     @foreach ($imagesCollection as $item)
-                                        @if ($item->is_cover !== 1)
-                                            <div class="gallery-item nature">
-                                                <div class="grid-item-holder hov_zoom">
-                                                    <img src="{{ $item->url_thumbnail }}" alt="">
-                                                    <a href="{{ $item->url }}" class="box-media-zoom popup-image"><i class="fal fa-search"></i></a>
+                    
+                                    <div class="pm_gallery_item">
+                                        <div class="pm_gallery_item_wrapper">
+                                            <div class="pm_image_wrapper">
+                                                <img src="{{ $item->url_thumbnail }}" alt="" />
+                                                <div class='pm_image_likes_wrapper'>
+                                                    <div class='pm_image_likes_container'>
+                                                       
+                                                        <a class='pm_popup_trigger' href='{{ $item->url }}' style="float: none;"></a>
+                                                        <div class='clear'></div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        @endif
-                                    @endforeach
-                                    <!-- gallery-item end-->
-                                </div>
-                                <!-- portfolio end -->
-                            </div>
-                            <!-- blog media end -->
-                            <div class="section-title fl-wrap">
-                                <h3>Project Details</h3>
-                                <h4>Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa</h4>
-                                <div class="section-number">02.</div>
-                            </div>
-                            <span class="separator sep-b"></span>
-                            <div class="clearfix"></div>
-                            <p>Cras mattis iudicium purus sit amet fermentum at nos hinc posthac, sitientis piros afros. Lorem
-                                ipsum dolor sit amet, consectetur adipisici elit, petierunt uti sibi concilium totius Galliae
-                                in diem sed eius mod tempor incidunt ut labore et dolore magna aliqua. Pellentesque habitant
-                                morbi tristique senectus et netus piros labore et dolore magna. Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.
-                                Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt.
-                                Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis
-                                massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra.
-                            </p>
-                            <p>Praesent nec leo venenatis elit semper aliquet id ac enim. Maecenas nec mi leo. Etiam venenatis
-                                ut dui non hendrerit. Integer dictum, diam vitae blandit accumsan, dolor odio tempus arcu,
-                                vel ultrices nisi nibh vitae ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Morbi varius lacinia vestibulum. Aliquam lobortis facilisis tellus, in facilisis ex vehicula
-                                ac. In malesuada quis turpis vel viverra.</p>
-                        </div>
-                        <div class="caption-wrap fl-wrap ">
-                            <ul>
-                                <li>
-                                    <span>Album</span>
-                                    <a href="{{ route('collectionByAlbum', ['slug' => $album->slug ]) }}">{{ $album->name }}</a>
-                                </li>
-                                <li>
-                                    <span>Model</span>
-                                    <a href="{{ route('collectionByAlbum', ['slug' => $model->slug ]) }}">{{ $model->name }}</a>
-                                </li>
-                                <li>
-                                    <span style="text-transform: none;">PASSWORD: pada.tech</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <a href="{{ $collectionDownload->url }}" class="btn fl-btn" target="_blank">{{ $download->name }}</a>
-                    </div>
-                </div>
-                <!-- post end-->
+                                        </div><!-- pm_gallery_item_wrapper -->
+                                    </div><!-- pm_gallery_item -->
+                                @endforeach
+                                </div><!-- isotope -->
+                                
+                            </div><!-- pm_gallery_container -->
+                        </div><!-- pm_album_grid -->
+                   
             </div>
-        </section>
-        <footer class="min-footer fl-wrap content-animvisible">
-            <div class="container small-container">
-                <div class="footer-inner fl-wrap">
-                    <!-- policy-box-->
-                    <div class="policy-box">
-                        <span>&#169; Kotlis 2019  /  All rights reserved. </span>
+            <div class="pm_row">
+                <div class="pm_span12">
+                    <div class="pm_content_standard">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lectus neque, malesuada sit amet
+                            commodo a, sollicitudin in nulla. Duis sed dui consectetur, faucibus diam sit amet, blandit ligula.
+                            Pellentesque eleifend vestibulum facilisis. Integer ac lobortis sapien. Quisque ut lacus et risus
+                            dictum pulvinar vel id leo. Pellentesque hendrerit pulvinar neque ac ornare cum sociis.</p>
+                        <p>Magnis dis parturient montes, nascetur ridiculus mus. Sed quis neque sit amet diam luctus feugiat
+                            vel nec tortor. Ut vitae ultrices nibh, quis gravida ipsum. Quisque euismod dolor eu neque sollicitudin,
+                            at pulvinar lectus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+                            per inceptos himenaeos. Suspendisse potenti. Mauris eros lacus, mollis ac felis eget, faucibus
+                            tempus tellus. Etiam mollis ultricies ligula ac maximus. Proin at sem molestie, euismod nisi
+                            et, dapibus velit. Phasellus condimentum ac ligula non malesuada. Sed varius tempus odio, eget
+                            imperdiet nibh egestas at. Curabitur gravida ligula in ultrices semper a praesent dis parturient
+                            montes, nascetur ridiculus mus. Sed quis neque sit amet diam luctus feugiat vel nec tortor. Ut
+                            vitae ultrices nibh, quis gravida ipsum. Quisque euismod dolor eu neque sollicitudin, at pulvinar
+                            lectus malesuada class aptent taciti sociosqu.</p>
                     </div>
-                    <!-- policy-box end-->
-                    <a href="#" class="to-top-btn to-top">Back to top <i class="fal fa-long-arrow-up"></i></a>
+                    <div class="pm_post_meta_standard">
+                        Posted on January 12, 2016 by <a href="#">Pixel-Mafia</a> in <a href="#">Travels</a>
+                    </div>
+                    <div class="pm_post_tags_standard">
+                        <a rel="tag" href="#">image</a>
+                        <a rel="tag" href="#">photo</a>
+                        <a rel="tag" href="#">photography</a>
+                        <a rel="tag" href="#">travel</a>
+                    </div>
+                    <div class="pm_post_comments_standard pm_simple_layout">
+                        <div id="comments">
+                            <div class="pm_comments_wrapper">
+                                <h1 class="pm_comments_number">
+                                    <span class="pm_comments_icon"></span> 2
+                                </h1>
+                                <ul class="pm_comments_list">
+
+                                    <li class="comment">
+                                        <div class="pm_comment_container">
+                                            <div class="pm_comment_wrapper">
+                                                <div class="pm_comment_avatar">
+                                                    <img class="avatar" src="http://pixel-mafia.com/demo/html-templates/travis/img/clipart/avatar-1.jpeg" alt="" />
+                                                </div>
+                                                <div class="pm_comment_info">
+                                                    <span class="pm_comment_author">Amy K.</span>
+                                                    <span class="pm_comment_date">January 18, 2016</span>
+                                                    <span class="pm_comment_reply">
+                                                            <span class="pm_comment_reply_back"></span>
+                                                    <span class="pm_comment_reply_back_hover"></span>
+                                                    </span>
+                                                </div>
+                                                <div class="pm_comment_text">
+                                                    <p>Wow! So creative and unique theme!</p>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </li>
+
+                                    <li class="comment">
+                                        <div class="pm_comment_container">
+                                            <div class="pm_comment_wrapper">
+                                                <div class="pm_comment_avatar">
+                                                    <img class="avatar" src="http://pixel-mafia.com/demo/html-templates/travis/img/clipart/avatar-2.jpeg" alt="" />
+                                                </div>
+                                                <div class="pm_comment_info">
+                                                    <span class="pm_comment_author">Steve</span>
+                                                    <span class="pm_comment_date">January 18, 2016</span>
+                                                    <span class="pm_comment_reply">
+                                                            <span class="pm_comment_reply_back"></span>
+                                                    <span class="pm_comment_reply_back_hover"></span>
+                                                    </span>
+                                                </div>
+                                                <div class="pm_comment_text">
+                                                    <p>Really amazing theme BY photographers FOR photographers!</p>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <!-- pm_comments_wrapper -->
+                            <div class="comment-respond">
+                                <form class="comment-form">
+                                    <p class="comment-notes">Your email address will not be published. Required fields are marked *</p>
+                                    <div class="pm_comment_input_wrapper">
+                                        <input class="pm_comment_respond_field" type="text" name="author" title="Name*" placeholder="Name*">
+                                    </div>
+                                    <div class="pm_comment_input_wrapper">
+                                        <input class="pm_comment_respond_field" type="text" name="tmail" title="Email*" placeholder="Email*">
+                                    </div>
+                                    <div class="pm_comment_input_wrapper">
+                                        <input class="pm_comment_respond_field" type="text" name="web" title="Web" placeholder="Web">
+                                    </div>
+                                    <div class="pm_comment_input_wrapper">
+                                        <textarea class="pm_comment_respond_field" name="comment" placeholder="Leave Your Comment*" rows="5" cols="45"></textarea>
+                                    </div>
+                                    <div class="form-submit">
+                                        <div class="pm_submit_wrapper">
+                                            <div class="pm_send_comment_button">
+                                                <span class="btn_text">Submit</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- comments -->
+                    </div>
+                    <!-- pm_post_comments_standard -->
                 </div>
             </div>
-        </footer>
+        </div>
     </div>
-    <!-- column-wrapper -->
 </div>
-<!--content end-->
 @endsection

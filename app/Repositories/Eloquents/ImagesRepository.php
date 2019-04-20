@@ -14,7 +14,7 @@ class ImagesRepository implements ImagesRepositoryInterface
 
     public function randomPaginate($page)
     {
-        return Images::inRandomOrder()->paginate($page);
+        return Images::select('url','url_thumbnail', 'srcset')->where('is_show', 1)->inRandomOrder()->paginate($page);
     }
 
 }

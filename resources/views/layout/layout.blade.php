@@ -2,21 +2,35 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="utf-8">
-    <title>Laravel</title>
+    <!-- Basic -->
+    <title>Travis</title>
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Travis - Responsive HTML5 Template">
+    <meta name="author" content="pixel-mafia.com">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="robots" content="index, follow" />
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <!--=============== css  ===============-->
-    <link type="text/css" rel="stylesheet" href="{{ asset('css/reset.css') }}">
-    <link type="text/css" rel="stylesheet" href="{{ asset('css/plugins.css') }}">
-    <link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link type="text/css" rel="stylesheet" href="{{ asset('css/style-dark.css') }}">
-    <!--=============== favicons ===============-->
-    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="http://pixel-mafia.com/demo/html-templates/travis/img/favicon.ico">
 
+    <!-- Apple Touch -->
+    <link rel="apple-touch-icon" href="http://pixel-mafia.com/demo/html-templates/travis/img/apple57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://pixel-mafia.com/demo/html-templates/travis/img/apple72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://pixel-mafia.com/demo/html-templates/travis/img/apple114.png">
+
+    <!-- Mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Responsive -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+
+    <!-- CSS -->
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" media="all">
+    <link href="{{ asset('css/grid.css') }}" rel="stylesheet" type="text/css" media="all">
+    <link href="{{ asset('css/pm-icons.css') }}" rel="stylesheet" type="text/css" media="all">
+    <link href="{{ asset('css/fontawesome.css') }}" rel="stylesheet" type="text/css" media="all">
 
 </head>
 
@@ -24,41 +38,24 @@
     <!--loader-->
     @include('inc.loader')
     <!--loader end-->
+    @include('inc.sharing')
 
-    <!-- main start  -->
-    <div id="main">
-        <!-- header start  -->
+    <!-- header start  -->
     @include('inc.header')
-        <!-- header end -->
+    <!-- header end -->
 
-        <!-- wrapper  -->
-        <div id="wrapper">
-            <!--content -->
-            @yield('content')
-            <!--content end-->
+    @yield('content')
+    <!-- JS -->
+    <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/lazysizes.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/isotope.pkgd.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/imagesloaded.pkgd.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 
-            <!--share-wrapper-->
-            @include('inc.shareWrapper')
-            <!--share-wrapper end-->
-        </div>
-        <!-- wrapper end -->
+<script>
 
-        <!-- sidebar -->
-        @include('inc.sidebar')
-        <!-- sidebar end -->
-
-        <!-- cursor-->
-        {{--
-        <div class="element">
-            <div class="element-item"></div>
-        </div> --}}
-        <!-- cursor end-->
-    </div>
-    <!-- Main end -->
-    <!--=============== scripts  ===============-->
-    <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>         
-    <script type="text/javascript" src="{{ asset('js/plugins.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/scripts.js') }}"></script>
+    </script>
 </body>
 
 </html>

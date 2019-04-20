@@ -29,11 +29,16 @@ class AlbumController extends Controller
         $models = $this->modelRepositoryInterface->getModelIsShow();
         $collections = $this->collectionRepositoryInterface
         ->getAllCollectionAndAlbumAndImagesAndModelPaginate(1);
-        $titleAlbum = 'Album';
         return view('page.album')->with('albums', $albums)
         ->with('models', $models)
-        ->with('collections', $collections)
-        ->with('titleAlbum', $titleAlbum);
+        ->with('collections', $collections);
+    }
+
+    public function apiAlbum()
+    {
+        $collections = $this->collectionRepositoryInterface
+        ->getAllCollectionAndAlbumAndImagesAndModelPaginate(1);
+        return response()->json(array('collections'=> $collections), 200);
     }
 
     public function getCollectionByAlbum($slug)
@@ -42,10 +47,8 @@ class AlbumController extends Controller
         $models = $this->modelRepositoryInterface->getModelIsShow();
         $collections = $this->collectionRepositoryInterface
         ->getCollectionAndImagesAndModelByAlbumPaginate($slug, 1);
-        $titleAlbum = $this->albumRepository->getNameAlbumBySlug($slug)->name;
         return view('page.album')->with('albums', $albums)
         ->with('models', $models)
-        ->with('collections', $collections)
-        ->with('titleAlbum', $titleAlbum);
+        ->with('collections', $collections);
     }
 }

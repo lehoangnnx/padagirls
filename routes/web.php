@@ -12,9 +12,15 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+
 Route::get('/random', 'RandomImagesController@index')->name('random');
+Route::get('/api/random', 'RandomImagesController@apiRandom')->name('apiRandom');
+
 Route::get('/album', 'AlbumController@index')->name('album');
+Route::get('/api/album', 'AlbumController@apiAlbum')->name('apiAlbum');
+
 Route::get('/album/{slug}', 'AlbumController@getCollectionByAlbum')->name('collectionByAlbum');
+
 Route::get('/{slug}', 'CollectionController@index')->name('detailCollection');
 Route::get('model/{slug}', 'ModelController@getModelBySlug')->name('modelBySlug');
 // Route::get('/detail', function () {
