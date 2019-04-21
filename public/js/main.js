@@ -65,7 +65,7 @@ function isotope_setup() {
     var container = jQuery('.isotope');
     if (container.length) {
         $grid = jQuery(container).isotope({
-            itemSelector: '.pm_gallery_item',
+            itemSelector: '.isotope-item',
             transitionDuration: '0.6s',
             visibleStyle: {
                 opacity: 1,
@@ -108,7 +108,6 @@ function blog_isotope_setup() {
 
 function portfolio_isotope_setup() {
     var container = jQuery('.portfolio_isotope');
-
     if (container.length) {
         jQuery(container).isotope({
             itemSelector: '.pm_portfolio_item'
@@ -188,7 +187,7 @@ jQuery.fn.gallery_addon = function (addon_options) {
                 e.images.data.forEach(function (e) {
                     // load more elements
                     loaded_object = loaded_object +
-                        '<div class="pm_gallery_item added"><div class="pm_gallery_item_wrapper">' +
+                        '<div class="pm_gallery_item isotope-item added"><div class="pm_gallery_item_wrapper">' +
                         '<div class="pm_image_wrapper"><img  class="lazyload" data-sizes="auto" data-src="' + e.url_thumbnail + '" data-srcset="' + e.srcset + '" alt="">' +
                         '<div class="pm_image_likes_wrapper"><div class="pm_image_likes_container">' +
                         '</div><a class="pm_popup_trigger" href="' + e.url + '" style="float: none;">' +
@@ -566,7 +565,8 @@ jQuery.fn.portfolio_listing_addon_title = function (addon_options) {
         img_per_load = addon_options.load_count,
         $newEls = '',
         loaded_object = '',
-        $container = jQuery('.portfolio_isotope');
+        $container = jQuery('.portfolio_isotope'),
+        uri = window.location.protocol + '//' + window.location.hostname;
 
     jQuery('.pm_load_more').on('click', function () {
         $newEls = '';
@@ -581,7 +581,7 @@ jQuery.fn.portfolio_listing_addon_title = function (addon_options) {
                 e.collections.data.forEach(function (e) {
                     // load more elements
                     loaded_object = loaded_object +
-                        '<div class="pm_portfolio_item added">' +
+                        '<div class="pm_portfolio_item isotope-item added">' +
                         '<div class="pm_portfolio_item_wrapper">' +
                         '<div class="pm_portfolio_featured_image_wrapper">' +
                         '<img src="' + e.url_thumbnail_images_collection + '" alt="" />' +
@@ -591,7 +591,7 @@ jQuery.fn.portfolio_listing_addon_title = function (addon_options) {
                         '<span class="pm_images_counter_icon"></span>' +
                         '<span class="images_counter">' + e.count_images + '</span>' +
                         '</div>' +
-                        '<a class="pm_potrfolio_read_more" href="' + e.slug_collection + '"></a>' +
+                        '<a class="pm_potrfolio_read_more" href="' + uri + '/' + e.slug_collection  + '"></a>' +
                         '<div class="clear"></div>' +
                         '</div>' +
                         '</div>' +

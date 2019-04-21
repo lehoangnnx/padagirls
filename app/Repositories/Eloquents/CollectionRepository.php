@@ -27,7 +27,7 @@ class CollectionRepository implements CollectionRepositoryInterface
         ->join('images_collection as ic', 'c.id', '=', 'ic.id_collection')
         ->join('model as m', 'm.id', '=', 'c.id_model')
         ->groupBy('ic.id_collection')
-        ->select('c.name as name_collection', 'c.slug as slug_collection',
+        ->select('c.name as name_collection', 'c.slug as slug_collection', 'ic.srcset as srcset',
         'a.name as album_name', 'a.slug as album_slug',
         'ic.url as url_images_collection', 'ic.url_thumbnail as url_thumbnail_images_collection', DB::raw('COUNT(ic.id) as count_images'),
         'm.name as model_name', 'm.slug as model_slug')->paginate($page);
@@ -41,7 +41,7 @@ class CollectionRepository implements CollectionRepositoryInterface
         ->whereRaw('a.slug = :slug', ['slug' => $slug])
         ->groupBy('ic.id_collection')
         ->select('c.name as name_collection', 'c.slug as slug_collection',
-        'a.name as album_name', 'a.slug as album_slug',
+        'a.name as album_name', 'a.slug as album_slug', 'ic.srcset as srcset',
         'ic.url as url_images_collection', 'ic.url_thumbnail as url_thumbnail_images_collection', DB::raw('COUNT(ic.id) as count_images'),
         'm.name as model_name', 'm.slug as model_slug')->paginate($page);
     }
@@ -53,7 +53,7 @@ class CollectionRepository implements CollectionRepositoryInterface
         ->join('model as m', 'm.id', '=', 'c.id_model')
         ->whereRaw('c.slug = :slug', ['slug' => $slug])
         ->select('c.name as name_collection', 'c.slug as slug_collection',
-        'a.name as album_name', 'a.slug as album_slug',
+        'a.name as album_name', 'a.slug as album_slug', 'ic.srcset as srcset',
         'ic.url as url_images_collection', 'ic.url_thumbnail as url_thumbnail_images_collection',
         'm.name as model_name', 'm.slug as model_slug')->get();
     }

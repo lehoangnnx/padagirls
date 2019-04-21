@@ -5,7 +5,7 @@
         <div class="pm_gallery_container gallery_grid">
             <div class="pm_gallery isotope photo_gallery">
                 @foreach ($images as $item)
-                <div class="pm_gallery_item">
+                <div class="pm_gallery_item isotope-item">
                     <div class="pm_gallery_item_wrapper">
                         <div class="pm_image_wrapper "  >
                             <img class="lazyload" data-sizes="auto"
