@@ -42,6 +42,10 @@ class RepositoriesServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\DownloadRepositoryInterface',
             'App\Repositories\Eloquents\DownloadRepository'
         );
+        $this->app->bind(
+            'App\Repositories\Contracts\TagsRepositoryInterface',
+            'App\Repositories\Eloquents\TagsRepository'
+        );
 
     }
 }

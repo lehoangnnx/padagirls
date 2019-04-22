@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Album;
 use Illuminate\Http\Request;
 use App\Repositories\Contracts\AlbumRepositoryInterface;
 use App\Repositories\Contracts\ModelRepositoryInterface;
@@ -10,6 +9,7 @@ use App\Repositories\Contracts\CollectionRepositoryInterface;
 
 class AlbumController extends Controller
 {
+    protected $paginationAlbum;
     protected $albumRepository;
     protected $collectionRepositoryInterface;
     protected $modelRepositoryInterface;
@@ -18,6 +18,7 @@ class AlbumController extends Controller
     CollectionRepositoryInterface $collectionRepositoryInterface,
     ModelRepositoryInterface $modelRepositoryInterface)
     {
+        $this->paginationAlbum = config('constants.PAGINATION_ALBUM');
         $this->albumRepository = $albumRepository;
         $this->collectionRepositoryInterface = $collectionRepositoryInterface;
         $this->modelRepositoryInterface = $modelRepositoryInterface;
@@ -28,7 +29,7 @@ class AlbumController extends Controller
         $albums = $this->albumRepository->getAllAlbumIsShow();
         $models = $this->modelRepositoryInterface->getModelIsShow();
         $collections = $this->collectionRepositoryInterface
-        ->getAllCollectionAndAlbumAndImagesAndModelPaginate(1);
+        ->getAllCollectionAndAlbumAndImagesAndModelPaginate(8);
         return view('page.album')->with('albums', $albums)
         ->with('models', $models)
         ->with('collections', $collections);
@@ -37,7 +38,7 @@ class AlbumController extends Controller
     public function apiAlbum()
     {
         $collections = $this->collectionRepositoryInterface
-        ->getAllCollectionAndAlbumAndImagesAndModelPaginate(1);
+        ->getAllCollectionAndAlbumAndImagesAndModelPaginate($this->paginationAlbum);
         return response()->json(array('collections'=> $collections), 200);
     }
 
@@ -46,9 +47,16 @@ class AlbumController extends Controller
         $albums = $this->albumRepository->getAllAlbumIsShow();
         $models = $this->modelRepositoryInterface->getModelIsShow();
         $collections = $this->collectionRepositoryInterface
-        ->getCollectionAndImagesAndModelByAlbumPaginate($slug, 1);
+        ->getCollectionAndImagesAndModelByAlbumPaginate($slug, $this->paginationAlbum);
         return view('page.album')->with('albums', $albums)
         ->with('models', $models)
         ->with('collections', $collections);
+    }
+
+    public function apiCollectionByAlbum($slug)
+    {
+        $collections = $this->collectionRepositoryInterface
+        ->getCollectionAndImagesAndModelByAlbumPaginate($slug, $this->paginationAlbum);
+        return response()->json(array('collections'=> $collections), 200);
     }
 }

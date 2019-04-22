@@ -23,7 +23,10 @@
                 </div><!-- pm_gallery_item -->
             @endforeach
             </div><!-- isotope -->
-            <a href="javascript:void(0)" data-current-page="{{ $images->currentPage() }}" class="pm_load_more"><span class="pm_load_more_back"></span></a>
+            @if ($images->hasMorePages())
+                <a href="javascript:void(0)" data-current-page="{{ $images->currentPage() }}" 
+                    class="pm_load_more"><span class="pm_load_more_back"></span></a>
+            @endif
             <div class="clear"></div>
         </div><!-- pm_gallery_container -->
     </div><!-- pm_album_grid -->

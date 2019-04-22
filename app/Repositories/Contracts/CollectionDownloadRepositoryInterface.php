@@ -4,5 +4,5 @@ namespace App\Repositories\Contracts;
 
 interface CollectionDownloadRepositoryInterface
 {
-    public function findByCollection($id_collection);
+    public function getCollectionDownload($id_collection);
 }

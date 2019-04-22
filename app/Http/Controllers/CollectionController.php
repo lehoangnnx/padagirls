@@ -9,22 +9,26 @@ use App\Repositories\Contracts\DownloadRepositoryInterface;
 use App\Repositories\Contracts\CollectionRepositoryInterface;
 use App\Repositories\Contracts\ImagesCollectionRepositoryInterface;
 use App\Repositories\Contracts\CollectionDownloadRepositoryInterface;
+use App\Repositories\Contracts\TagsRepositoryInterface;
 
 class CollectionController extends Controller
 {
+
     protected $albumRepository;
     protected $collectionRepositoryInterface;
     protected $imagesCollectionRepositoryInterface;
     protected $modelRepositoryInterface;
     protected $collectionDownloadRepositoryInterface;
     protected $downloadRepositoryInterface;
+    protected $tagsRepositoryInterface;
 
     public function __construct(AlbumRepositoryInterface $albumRepository,
     CollectionRepositoryInterface $collectionRepositoryInterface,
     ImagesCollectionRepositoryInterface $imagesCollectionRepositoryInterface,
     ModelRepositoryInterface $modelRepositoryInterface,
     CollectionDownloadRepositoryInterface $collectionDownloadRepositoryInterface,
-    DownloadRepositoryInterface $downloadRepositoryInterface)
+    DownloadRepositoryInterface $downloadRepositoryInterface,
+    TagsRepositoryInterface $tagsRepositoryInterface)
     {
         $this->albumRepository = $albumRepository;
         $this->collectionRepositoryInterface = $collectionRepositoryInterface;
@@ -32,18 +36,21 @@ class CollectionController extends Controller
         $this->modelRepositoryInterface = $modelRepositoryInterface;
         $this->collectionDownloadRepositoryInterface = $collectionDownloadRepositoryInterface;
         $this->downloadRepositoryInterface = $downloadRepositoryInterface;
-    } 
+        $this->tagsRepositoryInterface = $tagsRepositoryInterface;
+    }
+     
 
     public function index($slug)
     {
-        $albums = $this->albumRepository->getAllAlbumIsShow();
+        try {
+            $albums = $this->albumRepository->getAllAlbumIsShow();
         $models = $this->modelRepositoryInterface->getModelIsShow();
         $collection = $this->collectionRepositoryInterface->findBySlug($slug);
         $imagesCollection = $this->imagesCollectionRepositoryInterface->findByCollection($collection->id);
         $album = $this->albumRepository->findById($collection->id_album);
         $model = $this->modelRepositoryInterface->findById($collection->id_model);
-        $collectionDownload = $this->collectionDownloadRepositoryInterface->findByCollection($collection->id);
-        $download = $this->downloadRepositoryInterface->findById($collectionDownload->id_download);
+        $collectionDownload = $this->collectionDownloadRepositoryInterface->getCollectionDownload($collection->id);
+        $collectionTags = $this->tagsRepositoryInterface->getTagsByCollection($collection->id);
         $previousCollection = $this->collectionRepositoryInterface->getPreviousCollection($collection->id);
         $nextCollection = $this->collectionRepositoryInterface->getNextCollection($collection->id);
         if($previousCollection === null){
@@ -54,13 +61,7 @@ class CollectionController extends Controller
         }
         $imagesPreviousCollection = $this->imagesCollectionRepositoryInterface->findOneByCollection($previousCollection->id);
         $imagesNextCollection = $this->imagesCollectionRepositoryInterface->findOneByCollection($nextCollection->id);        
-        $imagesCover = '';
-        foreach ($imagesCollection as $item) {
-            if($item->is_show === 1){
-                $imagesCover = $item->url;
-                break;
-            }
-        }
+        
         return view('page.detailCollection')->with('albums', $albums)
         ->with('collection', $collection)
         ->with('imagesCollection', $imagesCollection)
@@ -68,11 +69,13 @@ class CollectionController extends Controller
         ->with('models', $models)
         ->with('model', $model)
         ->with('collectionDownload', $collectionDownload)
-        ->with('download', $download)
+        ->with('collectionTags', $collectionTags)
         ->with('previousCollection', $previousCollection)
         ->with('nextCollection', $nextCollection)
         ->with('imagesPreviousCollection', $imagesPreviousCollection)
-        ->with('imagesNextCollection', $imagesNextCollection)
-        ->with('imagesCover', $imagesCover);
+        ->with('imagesNextCollection', $imagesNextCollection);
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 }

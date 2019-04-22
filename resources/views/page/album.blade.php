@@ -22,14 +22,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="pm_portfolio_post_title">
-                        {{ $item->name_collection }}
-                    </div>
+                    <a href="{{ route('detailCollection', ['slug' => $item->slug_collection ]) }}">
+                        <div class="pm_portfolio_post_title">
+                            {{ $item->name_collection }}
+                        </div>
+                    </a>
                 </div>
             </div><!-- pm_portfolio_item -->
         @endforeach
     </div><!-- pm_portfolio_listing -->
-    <a href="javascript:void(0)" data-current-page="{{ $collections->currentPage() }}" class="pm_load_more"><span class="pm_load_more_back"></span></a>
+    @if ($collections->hasMorePages())
+        <a href="javascript:void(0)" data-next-page="{{ $collections->nextPageUrl() }}" 
+            class="pm_load_more"><span class="pm_load_more_back"></span></a>        
+    @endif
     <div class="clear"></div>
 </div><!-- pm_portfolio_listing_container -->
 @endsection

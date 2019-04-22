@@ -566,18 +566,16 @@ jQuery.fn.portfolio_listing_addon_title = function (addon_options) {
         $newEls = '',
         loaded_object = '',
         $container = jQuery('.portfolio_isotope'),
-        uri = window.location.protocol + '//' + window.location.hostname;
+        uri = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
 
     jQuery('.pm_load_more').on('click', function () {
         $newEls = '';
         loaded_object = '';
-
-        var current_page = Number($('.pm_load_more').attr('data-current-page')) + 1;
+        var next_page = $('.pm_load_more').attr('data-next-page').replace(uri, uri + '/api');
         $.ajax({
             type: "GET",
-            url: '/api/album?page=' + current_page,
+            url: next_page,
             success: function (e) {
-                $('.pm_load_more').attr('data-current-page', e.collections.current_page);
                 e.collections.data.forEach(function (e) {
                     // load more elements
                     loaded_object = loaded_object +
@@ -609,6 +607,8 @@ jQuery.fn.portfolio_listing_addon_title = function (addon_options) {
                 });
                 if (e.collections.current_page === e.collections.last_page) {
                     jQuery('.pm_load_more').fadeOut();
+                }else {
+                    $('.pm_load_more').attr('data-next-page', e.collections.next_page_url.replace('/api', ''));
                 }
                 setTimeout("jQuery('.portfolio_isotope').isotope();", 500);
                 setTimeout("jQuery('.portfolio_isotope').isotope();", 1000);
@@ -1250,12 +1250,17 @@ jQuery(document).ready(function () {
 /*********** WINDOW LOAD ***********/
 /***********************************/
 jQuery(window).load(function () {
-    window.onbeforeunload = function () {
-        window.scrollTo(0, 0)
-    }
+    // window.onbeforeunload = function () {
+    //     window.scrollTo(0, 0)
+    // }
     $(window).scroll(function () {
+        // jQuery('.pm_load_more').fadeOut();
         if ($(window).scrollTop() + $(window).height() == $(document).height()) {
             $grid.isotope('layout');
+            // setTimeout(() => {
+            // jQuery('.pm_load_more').fadeIn();
+                
+            // }, 1000);
         }
     });
 

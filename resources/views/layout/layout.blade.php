@@ -3,7 +3,7 @@
 
 <head>
     <!-- Basic -->
-    <title>Travis</title>
+    <title>PadaGirls</title>
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Travis - Responsive HTML5 Template">
     <meta name="author" content="pixel-mafia.com">
@@ -32,28 +32,7 @@
     <link href="{{ asset('css/pm-icons.css') }}" rel="stylesheet" type="text/css" media="all">
     <link href="{{ asset('css/fontawesome.css') }}" rel="stylesheet" type="text/css" media="all">
 <style>
-.mfp-with-zoom .mfp-container,
-.mfp-with-zoom.mfp-bg {
-  opacity: 0;
-  -webkit-backface-visibility: hidden;
-  /* ideally, transition speed should match zoom duration */
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-}
 
-.mfp-with-zoom.mfp-ready .mfp-container {
-    opacity: 1;
-}
-.mfp-with-zoom.mfp-ready.mfp-bg {
-    opacity: 0.8;
-}
-
-.mfp-with-zoom.mfp-removing .mfp-container,
-.mfp-with-zoom.mfp-removing.mfp-bg {
-  opacity: 0;
-}
 </style>
 
 </head>
@@ -69,6 +48,9 @@
     <!-- header end -->
 
     @yield('content')
+  
+    <a id="btnBackToTop" onclick="topFunction()" class="pm_back_to_top_button" 
+        href="javascript:void(0);"style="display: none;"></a>
     <!-- JS -->
     <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/lazysizes.min.js') }}"></script>
@@ -78,7 +60,21 @@
     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 
 <script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
 
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("btnBackToTop").style.display = "block";
+  } else {
+    document.getElementById("btnBackToTop").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    $('html, body').animate({scrollTop:0}, 'slow');
+}
     </script>
 </body>
 

@@ -9,6 +9,7 @@ use App\Repositories\Contracts\ImagesRepositoryInterface;
 
 class RandomImagesController extends Controller
 {
+    protected $paginationRandom;
     protected $imagesRepository;
     protected $albumRepository;
     protected $modelRepositoryInterface;
@@ -18,6 +19,7 @@ class RandomImagesController extends Controller
         AlbumRepositoryInterface $albumRepository,
         ModelRepositoryInterface $modelRepositoryInterface)
     {
+        $this->paginationRandom = config('constants.PAGINATION_RANDOM');
         $this->imagesRepository = $imagesRepository;
         $this->albumRepository = $albumRepository;
         $this->modelRepositoryInterface = $modelRepositoryInterface;
@@ -27,7 +29,7 @@ class RandomImagesController extends Controller
     {
         $albums = $this->albumRepository->getAllAlbumIsShow();
         $models = $this->modelRepositoryInterface->getModelIsShow();
-        $images = $this->imagesRepository->randomPaginate(4);
+        $images = $this->imagesRepository->randomPaginate($this->paginationRandom);
         return view('page.imageRandom')->with('albums', $albums)
         ->with('models', $models)
         ->with('images', $images);
@@ -35,7 +37,7 @@ class RandomImagesController extends Controller
 
     public function apiRandom()
     {
-        $images = $this->imagesRepository->randomPaginate(100);
+        $images = $this->imagesRepository->randomPaginate($this->paginationRandom);
         return response()->json(array('images'=> $images), 200);
     }
 }

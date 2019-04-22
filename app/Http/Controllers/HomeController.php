@@ -11,6 +11,7 @@ use App\Repositories\Contracts\CollectionRepositoryInterface;
 class HomeController extends Controller
 {
 
+    protected $paginationRandom;
     protected $imagesRepository;
     protected $albumRepository;
     protected $collectionRepositoryInterface;
@@ -21,6 +22,7 @@ class HomeController extends Controller
     CollectionRepositoryInterface $collectionRepositoryInterface,
     ModelRepositoryInterface $modelRepositoryInterface)
     {
+        $this->paginationRandom = config('constants.PAGINATION_RANDOM');
         $this->imagesRepository = $imagesRepository;
         $this->albumRepository = $albumRepository;
         $this->collectionRepositoryInterface = $collectionRepositoryInterface;
@@ -33,7 +35,7 @@ class HomeController extends Controller
         $models = $this->modelRepositoryInterface->getModelIsShow();
         $collectionAndAlbumAndImagesAndModelLimit = $this->collectionRepositoryInterface
         ->getCollectionAndAlbumAndImagesAndModelLimit();
-        $images = $this->imagesRepository->randomPaginate(100);
+        $images = $this->imagesRepository->randomPaginate($this->paginationRandom);
         return view('page.home')->with('albums', $albums)
         ->with('models', $models)
         ->with('images', $images)
