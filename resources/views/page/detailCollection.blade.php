@@ -61,20 +61,7 @@
             <div class="pm_row">
                 <div class="pm_span12">
                     <div class="pm_content_standard">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lectus neque, malesuada sit amet
-                            commodo a, sollicitudin in nulla. Duis sed dui consectetur, faucibus diam sit amet, blandit ligula.
-                            Pellentesque eleifend vestibulum facilisis. Integer ac lobortis sapien. Quisque ut lacus et risus
-                            dictum pulvinar vel id leo. Pellentesque hendrerit pulvinar neque ac ornare cum sociis.</p>
-                        <p>Magnis dis parturient montes, nascetur ridiculus mus. Sed quis neque sit amet diam luctus feugiat
-                            vel nec tortor. Ut vitae ultrices nibh, quis gravida ipsum. Quisque euismod dolor eu neque sollicitudin,
-                            at pulvinar lectus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-                            per inceptos himenaeos. Suspendisse potenti. Mauris eros lacus, mollis ac felis eget, faucibus
-                            tempus tellus. Etiam mollis ultricies ligula ac maximus. Proin at sem molestie, euismod nisi
-                            et, dapibus velit. Phasellus condimentum ac ligula non malesuada. Sed varius tempus odio, eget
-                            imperdiet nibh egestas at. Curabitur gravida ligula in ultrices semper a praesent dis parturient
-                            montes, nascetur ridiculus mus. Sed quis neque sit amet diam luctus feugiat vel nec tortor. Ut
-                            vitae ultrices nibh, quis gravida ipsum. Quisque euismod dolor eu neque sollicitudin, at pulvinar
-                            lectus malesuada class aptent taciti sociosqu.</p>
+                            {{ $collection->discription }}
                     </div>
                     <div class="pm_divider type_2"></div>
                     <div class="pm_standard_title_and_likes_container">
